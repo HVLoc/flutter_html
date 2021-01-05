@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:csslib/visitor.dart' as css;
 import 'package:csslib/parser.dart' as cssparser;
-import 'package:flutter_html/style.dart';
+import 'package:flutter_html_fork/style.dart';
 
 Style declarationsToStyle(Map<String, List<css.Expression>> declarations) {
   Style style = new Style();
@@ -18,7 +18,6 @@ Style declarationsToStyle(Map<String, List<css.Expression>> declarations) {
       case 'text-align':
         style.textAlign = ExpressionMapping.expressionToTextAlign(value.first);
         break;
-
     }
   });
   return style;
@@ -112,7 +111,7 @@ class ExpressionMapping {
 
   static TextAlign expressionToTextAlign(css.Expression value) {
     if (value is css.LiteralTerm) {
-      switch(value.text) {
+      switch (value.text) {
         case "center":
           return TextAlign.center;
         case "left":

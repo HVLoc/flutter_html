@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
-import 'package:flutter_html/html_parser.dart';
-import 'package:flutter_html/src/html_elements.dart';
-import 'package:flutter_html/style.dart';
+import 'package:flutter_html_fork/flutter_html.dart';
+import 'package:flutter_html_fork/html_parser.dart';
+import 'package:flutter_html_fork/src/html_elements.dart';
+import 'package:flutter_html_fork/style.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

@@ -8,10 +8,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_html/html_parser.dart';
-import 'package:flutter_html/src/html_elements.dart';
-import 'package:flutter_html/src/utils.dart';
-import 'package:flutter_html/style.dart';
+import 'package:flutter_html_fork/html_parser.dart';
+import 'package:flutter_html_fork/src/html_elements.dart';
+import 'package:flutter_html_fork/src/utils.dart';
+import 'package:flutter_html_fork/style.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:html/dom.dart' as dom;
 import 'package:video_player/video_player.dart';
@@ -138,16 +138,15 @@ class ImageContentElement extends ReplacedElement {
         }
       });
       image.image.resolve(ImageConfiguration()).addListener(
-        ImageStreamListener(
-              (ImageInfo image, bool synchronousCall) {
-            var myImage = image.image;
-            Size size = Size(myImage.width.toDouble(), myImage.height.toDouble());
-            completer.complete(size);
-          }, onError: (object, stacktrace) {
-            completer.completeError(object);
-          }
-        ),
-      );
+            ImageStreamListener((ImageInfo image, bool synchronousCall) {
+              var myImage = image.image;
+              Size size =
+                  Size(myImage.width.toDouble(), myImage.height.toDouble());
+              completer.complete(size);
+            }, onError: (object, stacktrace) {
+              completer.completeError(object);
+            }),
+          );
       imageWidget = FutureBuilder<Size>(
         future: completer.future,
         builder: (BuildContext buildContext, AsyncSnapshot<Size> snapshot) {
@@ -158,7 +157,8 @@ class ImageContentElement extends ReplacedElement {
               height: snapshot.data.height,
               frameBuilder: (ctx, child, frame, _) {
                 if (frame == null) {
-                  return Text(alt ?? "", style: context.style.generateTextStyle());
+                  return Text(alt ?? "",
+                      style: context.style.generateTextStyle());
                 }
                 return child;
               },

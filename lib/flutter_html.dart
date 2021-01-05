@@ -1,8 +1,8 @@
 library flutter_html;
 
 import 'package:flutter/material.dart';
-import 'package:flutter_html/html_parser.dart';
-import 'package:flutter_html/style.dart';
+import 'package:flutter_html_fork/html_parser.dart';
+import 'package:flutter_html_fork/style.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class Html extends StatelessWidget {

@@ -1,10 +1,10 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_html/html_parser.dart';
-import 'package:flutter_html/src/html_elements.dart';
-import 'package:flutter_html/src/styled_element.dart';
-import 'package:flutter_html/style.dart';
+import 'package:flutter_html_fork/html_parser.dart';
+import 'package:flutter_html_fork/src/html_elements.dart';
+import 'package:flutter_html_fork/src/styled_element.dart';
+import 'package:flutter_html_fork/style.dart';
 import 'package:flutter_layout_grid/flutter_layout_grid.dart';
 import 'package:html/dom.dart' as dom;
 
@@ -92,7 +92,8 @@ class TableLayoutElement extends LayoutElement {
               ),
               child: SizedBox.expand(
                 child: Container(
-                  alignment: child.style.alignment ?? style.alignment ??
+                  alignment: child.style.alignment ??
+                      style.alignment ??
                       Alignment.centerLeft,
                   child: StyledText(
                     textSpan: context.parser.parseTree(context, child),
@@ -131,7 +132,6 @@ class TableLayoutElement extends LayoutElement {
     );
   }
 }
-
 
 class TableSectionLayoutElement extends LayoutElement {
   TableSectionLayoutElement({
@@ -172,12 +172,12 @@ class TableCellElement extends StyledElement {
     Style style,
     dom.Element node,
   }) : super(
-      name: name,
-      elementId: elementId,
-      elementClasses: elementClasses,
-      children: children,
-      style: style,
-      node: node) {
+            name: name,
+            elementId: elementId,
+            elementClasses: elementClasses,
+            children: children,
+            style: style,
+            node: node) {
     colspan = _parseSpan(this, "colspan");
     rowspan = _parseSpan(this, "rowspan");
   }
@@ -188,8 +188,9 @@ class TableCellElement extends StyledElement {
   }
 }
 
-TableCellElement parseTableCellElement(dom.Element element,
-    List<StyledElement> children,
+TableCellElement parseTableCellElement(
+  dom.Element element,
+  List<StyledElement> children,
 ) {
   final cell = TableCellElement(
     name: element.localName,
@@ -215,8 +216,9 @@ class TableStyleElement extends StyledElement {
   }) : super(name: name, children: children, style: style, node: node);
 }
 
-TableStyleElement parseTableDefinitionElement(dom.Element element,
-    List<StyledElement> children,
+TableStyleElement parseTableDefinitionElement(
+  dom.Element element,
+  List<StyledElement> children,
 ) {
   switch (element.localName) {
     case "colgroup":
@@ -231,8 +233,9 @@ TableStyleElement parseTableDefinitionElement(dom.Element element,
   }
 }
 
-LayoutElement parseLayoutElement(dom.Element element,
-    List<StyledElement> children,
+LayoutElement parseLayoutElement(
+  dom.Element element,
+  List<StyledElement> children,
 ) {
   switch (element.localName) {
     case "table":
