@@ -99,7 +99,7 @@ class HtmlParser extends StatelessWidget {
   ) {
     StyledElement tree = StyledElement(
       name: "[Tree Root]",
-      children: new List<StyledElement>(),
+      children: List<StyledElement>(),
       node: html.documentElement,
     );
 
@@ -630,7 +630,7 @@ class HtmlParser extends StatelessWidget {
   /// or any block-level [TextContentElement] that contains only whitespace and doesn't follow
   /// a block element or a line break.
   static StyledElement _removeEmptyElements(StyledElement tree) {
-    List<StyledElement> toRemove = new List<StyledElement>();
+    List<StyledElement> toRemove = List<StyledElement>();
     bool lastChildBlock = true;
     tree.children?.forEach((child) {
       if (child is EmptyContentElement) {
